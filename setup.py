@@ -23,10 +23,7 @@ def get_version(rel_path):
 
 HERE = pathlib.Path(__file__).parent
 README = (HERE / "README.md").read_text()
-if os.path.exists("keras/version.py"):
-    VERSION = get_version("keras/version.py")
-else:
-    VERSION = get_version("keras/__init__.py")
+VERSION = get_version("keras/src/version.py")
 
 setup(
     name="keras",
@@ -46,6 +43,7 @@ setup(
         "h5py",
         "optree",
         "ml-dtypes",
+        "packaging",
     ],
     # Supported Python versions
     python_requires=">=3.9",
@@ -62,5 +60,8 @@ setup(
         "Topic :: Scientific/Engineering",
         "Topic :: Software Development",
     ],
-    packages=find_packages(exclude=("*_test.py",)),
+    packages=find_packages(
+        include=("keras", "keras.*"),
+        exclude=("*_test.py", "benchmarks"),
+    ),
 )

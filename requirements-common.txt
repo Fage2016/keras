@@ -1,4 +1,4 @@
-namex
+namex>=0.0.8
 black>=22
 flake8
 isort
@@ -17,3 +17,6 @@ rich
 build
 optree
 pytest-cov
+packaging
+# for tree_test.py
+dm_tree
